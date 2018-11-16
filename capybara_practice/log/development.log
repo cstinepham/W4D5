@@ -48,3 +48,128 @@ Migrating to AddColumnsToUsers (20181116201100)
   ↳ bin/rails:9
   [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+Started GET "/cats" for 127.0.0.1 at 2018-11-16 15:19:40 -0800
+  [1m[35m (8.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/var/rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/cats"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-11-16 15:19:42 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/var/rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/var/rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (3.0ms)
+Completed 200 OK in 24ms (Views: 8.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-11-16 15:19:49 -0800
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 748ms (Views: 747.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-11-16 15:20:33 -0800
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"EkPDm01kYXKRqgFWne54lIy+l/goXvGy26PDtECn9o8/5kALtAxFxSe+6vx6en4BVlY42/5MlRUujTYD99oA0Q==", "user"=>{"username"=>"Bobina", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8
+  [1m[36mUser Exists (18.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Bobina"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "username", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-11-16 23:20:33.631915"], ["updated_at", "2018-11-16 23:20:33.631915"], ["username", "Bobina"], ["password_digest", "$2a$10$OXSOIMsl3vRaIulwvD.mCONtO9nuuttEIPZa6CDPmDC7YOmmQQ9Z2"], ["session_token", "HOb_2PSDUYzk7YLIj9cwPA"]]
+  ↳ app/controllers/users_controller.rb:8
+  [1m[35m (10.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 183ms (ActiveRecord: 44.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-11-16 15:20:33 -0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 56ms (Views: 52.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-11-16 15:20:45 -0800
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 16ms (Views: 15.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-11-16 15:20:49 -0800
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"qMANyMbX0zxiicvyIKYOZGu2XAEW2GNEcCa/h6Q7ilCFZY5YP7/3i9SdIFjHMgjxsV7zIsDKB+OFCEowE0Z8Dg==", "user"=>{"username"=>"Bob", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8
+  [1m[36mUser Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Bob"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "username", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-11-16 23:20:49.858031"], ["updated_at", "2018-11-16 23:20:49.858031"], ["username", "Bob"], ["password_digest", "$2a$10$40Vl5BVOuKIyzsoG.tLis.RVZKmMeIT0qM2.drwPpFg4x6HEwlicO"], ["session_token", "P8dWK3bf80-Dzf2tEI8Wpw"]]
+  ↳ app/controllers/users_controller.rb:8
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 92ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2018-11-16 15:20:49 -0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 18ms (Views: 15.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-11-16 15:20:59 -0800
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 25ms (Views: 24.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-11-16 15:21:04 -0800
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"OuXFx/OEDKBS6voCyO5q5BVQEa0NiRutBW5tio3ggzEXQEZXCuwoF+T+Eagvemxxz7i+jtubfwrwQJg9Op11bw==", "user"=>{"username"=>"Bobina", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Bobina"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:8
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 172ms (Views: 16.8ms | ActiveRecord: 1.2ms)
+
+
