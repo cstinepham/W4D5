@@ -1,0 +1,4 @@
+  [1m[35m (173.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "capybara_practice_test"[0m
+  [1m[35m (250.5ms)[0m  [1m[35mCREATE DATABASE "capybara_practice_test" ENCODING = 'unicode'[0m
+  [1m[35m (119.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "capybara_practice_test"[0m
+  [1m[35m (304.4ms)[0m  [1m[35mCREATE DATABASE "capybara_practice_test" ENCODING = 'unicode'[0m
