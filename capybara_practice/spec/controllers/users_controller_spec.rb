@@ -39,4 +39,28 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "GET #index" do
+    it 'renders index page' do
+      get :index
+      expect(response).to render_template(:index)
+    end
+  end
+
+  describe "GET #show" do
+    context 'with an existing user' do
+      it 'renders user\'s show page' do
+        get :show
+        expect(response).to render_template(:show)
+      end
+    end
+
+    context 'with a non-existing user' do
+      it 'redirect to users index page' do
+        get :show
+        expect(response).to redirect_to(users_url)
+      end
+    end
+  end
+
+
 end
