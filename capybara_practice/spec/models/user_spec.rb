@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject(:user) { User.create(username: "Bob", password: "password") }
-  subject(:broken_user) { User.create(username: "Bob", password: "short") }
+  user = User.create!(username: "Bob", password: "password")
 
   describe 'tests all validations' do
     context 'valid user' do
@@ -11,6 +10,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'invalid password' do
+      subject(:broken_user) { User.create(username: "Bob", password: "short") }
       it { should validate_length_of(:password).is_at_least(6) }
     end
 
@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'ensures assignment of session token' do
-      expect (user.session_token).not_to be_nil
+      expect(user.session_token).not_to be_nil
     end
   end
 
