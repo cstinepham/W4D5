@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
   describe 'tests all validations' do
     context 'valid user' do
       it { should validate_presence_of(:username) }
-      it { should validate_presence_of(:password) }
+      it { should validate_presence_of(:password_digest) }
     end
 
     context 'invalid password' do
@@ -15,12 +15,11 @@ RSpec.describe User, type: :model do
     end
 
     context 'user already exists' do
-      user = User.create(username: "Bob", password: "password")
+      subject(:user) { User.create(username: "Bob", password: "password") }
       it { should validate_uniqueness_of(:username) }
-
     end
 
-    context 'assigns session token' do
+    it 'ensures assignment of session token' do
       expect (user.session_token).not_to be_nil
     end
   end
@@ -33,15 +32,10 @@ RSpec.describe User, type: :model do
       expect(user2).to be_nil
     end
   end
-  # Associations
-  # has many goals
-  # goal has one user
-  # user has many comments
-  # comment has a user
 
   describe 'tests associations' do
-    it { should has_many(:goals) }
-    it { should has_many(:comments) }
+    it { should have_many(:goals) }
+    it { should have_many(:comments) }
   end
 
 end
