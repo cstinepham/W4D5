@@ -899,3 +899,41 @@ Completed 200 OK in 6ms (Views: 3.1ms | ActiveRecord: 0.6ms)
   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/new" for 127.0.0.1 at 2018-11-16 16:24:37 -0800
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 467ms (Views: 458.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (5.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/new" for 127.0.0.1 at 2018-11-16 16:24:38 -0800
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2018-11-16 16:24:38 -0800
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"QOc3t+tDWPNxj7p+uhbVAc9GubJYdvk7gmXzDQaKF5skyCTL48dUi7E5ii2JhwOGLmyF/MMkwUfVyu+shMNE5Q==", "user"=>{"username"=>"kevin", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "kevin"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "username", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-11-17 00:24:38.290673"], ["updated_at", "2018-11-17 00:24:38.290673"], ["username", "kevin"], ["password_digest", "$2a$10$NcVuNsx5SCHAbseDFnKFI.HHFFRB9f0ma86r.74kG4BLePX0QTUm2"], ["session_token", "UDvEFZXzbQTialCuh7gJ6w"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/users/41
+Completed 302 Found in 153ms (ActiveRecord: 12.3ms)
+Started GET "/users/41" for 127.0.0.1 at 2018-11-16 16:24:38 -0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"41"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/session/new
+Filter chain halted as :require_log_in rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+Started GET "/session/new" for 127.0.0.1 at 2018-11-16 16:24:38 -0800
+Processing by SessionsController#new as HTML
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
